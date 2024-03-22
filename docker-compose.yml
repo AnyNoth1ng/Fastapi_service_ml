@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  api:
+    build: .
+    env_file:
+      - ./.env
+    ports:
+      - 8099:8099
+    restart: unless-stopped
+    depends_on:
+      - redis
+
+  redis:
+    image: redis:7
+    restart: unless-stopped
